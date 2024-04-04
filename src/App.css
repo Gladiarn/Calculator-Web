@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Reddit Mono", monospace;
+  font-weight: normal;
+}
+body{
+  height: 100vh;
+  width: 100%;
+  background-color: #385170;
+}
+.Container{
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  place-items: center;
+  background-color: #385170;
+}
+
+.Calculator-Body{
+  border: 1px solid #14243a; 
+  border-radius: 10px;
+  box-shadow: 0 0 5px #0e1827; 
+
+  padding: 11px;
+  min-height: 75vh;
+  width: clamp(330px, 30vw, 1000px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #1d3555; 
+}
+.copyright{
+  font-size: .6rem;
+  color: #F0F0F0;
+}
+
+.Head{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  color: #F0F0F0;
+  position: relative;
+}
+
+.Head-Icon{
+  height: 40px;
+  width: 40px;
+}
+.Screen{
+  border: 1.5px solid #0d2036;
+  border-radius: 10px;
+  height: 120px;
+  background-color: #10243b; 
+  color: #F0F0F0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  overflow: auto;
+
+  position: relative;
+
+  box-shadow: inset 0 0 5px 3px #0b1929;
+}
+
+.Screen::-webkit-scrollbar{
+  display: none;
+}
+
+.Screen p{
+  margin-left: auto;
+  letter-spacing: 2.5px;
+  white-space: nowrap;
+  margin-top: 1px;
+}
+
+.preview{
+
+  font-size: 1rem;
+  position: absolute;
+
+  top: 0;
+  right: 10px;
+
+  color:  hsla(0, 0%, 100%, 0.493);
+
+
+}
+
+.Inputs{
+  border: 1px solid rgb(51, 75, 105); 
+  border-radius: 10px;
+  height: 100%;
+  background-color: #122a47; 
+  padding: 20px;
+  box-shadow: inset 0 0 5px 3px #0c1c30; 
+}
+
+.Keypads{
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  
+}
+
+.Keypads button{
+  width: clamp(80px, 21.3%, 150px);
+  height: 60px;
+  font-size: 2rem;
+
+  background-color: #F0F0F0;
+  border-radius: 10px;
+  box-shadow: 0 5px 0 #afafaf;
+  border: none;
+}
+
+.Delete, .Keypads .Delete{
+  background-color: #ff5454;
+  box-shadow: 0 5px 0 #b83e3e;
+  color: #F0F0F0;
+}
+
+.LowerBtns button{
+  height: 60px;
+  width: 50%;
+  border-radius: 10px;
+  border: none;
+  font-size: 2rem;
+}
+.LowerBtns{
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+.Equal{
+  color: #F0F0F0;
+  background-color: #2f6db9;
+  box-shadow: 0 5px 0 #214c81;
+}
