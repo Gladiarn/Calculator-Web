@@ -2,10 +2,26 @@ import "./App.css";
 import { CiCalculator2 } from "react-icons/ci";
 import { useState } from "react";
 import {evaluate} from "mathjs";
+import {Variants, easeIn, easeInOut, motion} from "framer-motion"
 
 const App = () => {
+  //variable for press animation
+  const pressAnim: Variants = {
+    initial: {
+      boxShadow: "0 5px 0 #afafaf"
+    },
+
+    tap: {y: 5,
+      boxShadow: "0 2px 0 #afafaf",
+    }
+
+  }
 
 
+
+
+
+  
   //states
   const [input, setInput] = useState("0");
   const [preview, setPreview] = useState("0");
@@ -33,11 +49,7 @@ const App = () => {
     }
 
     //figuring out whether a zero is next in an operator or if a zero has no number aside from zero preceding it
-    if(LastisOperator && e.currentTarget.value === "0"){
-      setInput(input + e.currentTarget.value);
-    }
-    if(LastisOperator && e.currentTarget.value !== "0"){
-      setNewEquation(false);
+    if(LastisOperator && e.currentTarget.value === "0" || LastisOperator && e.currentTarget.value !== "0" ){
       setInput(input + e.currentTarget.value);
     }
 
@@ -152,26 +164,27 @@ const App = () => {
 
         <div className="Inputs">
           <div className="Keypads">
-            <button value={7} onClick={(e)=>{InputHandler(e)}}>7</button>
-            <button value={8} onClick={(e)=>{InputHandler(e)}}>8</button>
-            <button value={9} onClick={(e)=>{InputHandler(e)}}>9</button>
-            <button className="Delete" onClick={()=>{Del()}}>DEL</button>
-            <button value={4} onClick={(e)=>{InputHandler(e)}}>4</button>
-            <button value={5} onClick={(e)=>{InputHandler(e)}}>5</button>
-            <button value={6} onClick={(e)=>{InputHandler(e)}}>6</button>
-            <button value={"+"} onClick={(e)=>{InputHandler(e)}} disabled={false}>+</button>
-            <button value={1} onClick={(e)=>{InputHandler(e)}}>1</button>
-            <button value={2} onClick={(e)=>{InputHandler(e)}}>2</button>
-            <button value={3} onClick={(e)=>{InputHandler(e)}}>3</button>
-            <button value={"-"} onClick={(e)=>{InputHandler(e)}} disabled={false}>-</button>
-            <button value={"."} onClick={(e)=>{InputHandler(e)}} disabled={false}>.</button>
-            <button value={0} onClick={(e)=>{InputHandler(e)}}>0</button>
-            <button value={"/"} onClick={(e)=>{InputHandler(e)}} disabled={false}>/</button>
-            <button value={"x"} onClick={(e)=>{InputHandler(e)}} disabled={false}>X</button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}} value={7} onClick={(e)=>{InputHandler(e)}}>7</motion.button>
+
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={8} onClick={(e)=>{InputHandler(e)}}>8</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={9} onClick={(e)=>{InputHandler(e)}}>9</motion.button>
+            <motion.button initial={{boxShadow: "0 5px 0 #b83e3e",}} whileTap={{y: "5px", boxShadow: "0 2px 0 #b83e3e"}} transition={{duration: .1, ease: easeInOut}} className="Delete" onClick={()=>{Del()}}>DEL</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={4} onClick={(e)=>{InputHandler(e)}}>4</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={5} onClick={(e)=>{InputHandler(e)}}>5</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={6} onClick={(e)=>{InputHandler(e)}}>6</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={"+"} onClick={(e)=>{InputHandler(e)}} disabled={false}>+</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={1} onClick={(e)=>{InputHandler(e)}}>1</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={2} onClick={(e)=>{InputHandler(e)}}>2</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={3} onClick={(e)=>{InputHandler(e)}}>3</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={"-"} onClick={(e)=>{InputHandler(e)}} disabled={false}>-</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={"."} onClick={(e)=>{InputHandler(e)}} disabled={false}>.</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={0} onClick={(e)=>{InputHandler(e)}}>0</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={"/"} onClick={(e)=>{InputHandler(e)}} disabled={false}>/</motion.button>
+            <motion.button variants={pressAnim} whileTap="tap" initial="initial" transition={{duration: .1, ease: easeInOut}}  value={"x"} onClick={(e)=>{InputHandler(e)}} disabled={false}>X</motion.button>
           </div>
           <div className="LowerBtns">
-            <button className="Delete" onClick={()=>{Clear()}}>AC</button>
-            <button className="Equal" onClick={()=>{Solve()}}>=</button>
+            <motion.button initial={{boxShadow: "0 5px 0 #b83e3e",}} whileTap={{y: "5px", boxShadow: "0 2px 0 #b83e3e"}} transition={{duration: .1, ease: easeInOut}} className="Delete" onClick={()=>{Clear()}}>AC</motion.button>
+            <motion.button initial={{boxShadow: "0 5px 0 #214c81",}} whileTap={{y: "5px", boxShadow: "0 2px 0 #214c81"}} transition={{duration: .1, ease: easeInOut}}  className="Equal" onClick={()=>{Solve()}}>=</motion.button>
           </div>
         </div>
         <p className="copyright">© 2024 Bulilan. All rights reserved.</p>
